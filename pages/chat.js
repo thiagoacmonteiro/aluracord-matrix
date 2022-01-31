@@ -2,14 +2,20 @@ import { Box, Text, TextField, Image, Button } from '@skynexui/components';
 import React, { useState, useEffect } from 'react';
 import appConfig from '../config.json';
 import { createClient } from '@supabase/supabase-js';
+import { useRouter } from 'next/router';
+import { ButtonSendSticker } from '../src/components/ButtonSendSticker';
 
 const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiYW5vbiIsImlhdCI6MTY0MzY0MTM3OCwiZXhwIjoxOTU5MjE3Mzc4fQ.HFdeBqJ52-eikPaTZm4q0dQr4wRJokbFZ4xy4T41QAA';
 const SUPABASE_URL = 'https://nmyggllpbbfgqsooivtm.supabase.co';
 const supabaseClient = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
 export default function ChatPage() {
+  const router = useRouter();
+  const logedUser = router.query.username;
   const [message, setMessage] = useState('');
   const [messagesList, setMessagesList] = useState([]);
+
+  console.log(router.query);
 
   useEffect(() => {
     supabaseClient
@@ -24,7 +30,7 @@ export default function ChatPage() {
   function handleNewMessage(message) {
     const messageInfo = {
       // id: messagesList.length + 1,
-      from: 'thiagoacmonteiro',
+      from: logedUser,
       text: message,
     };
 
@@ -110,6 +116,7 @@ export default function ChatPage() {
                 color: appConfig.theme.colors.neutrals[200],
               }}
             />
+            <ButtonSendSticker />
           </Box>
         </Box>
       </Box>
