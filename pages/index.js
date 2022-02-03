@@ -32,7 +32,7 @@ function Title(props) {
 // export default HomePage
 
 export default function PaginaInicial() {
-  const [username, setUsername] = useState('thiagoacmonteiro');
+  const [username, setUsername] = useState('');
   const router = useRouter();
 
   return (
@@ -76,8 +76,9 @@ export default function PaginaInicial() {
             <Text variant="body3" styleSheet={{ marginBottom: '32px', color: appConfig.theme.colors.neutrals[300] }}>
               {appConfig.name}
             </Text>
-
+            
             <TextField
+              placeholder='Enter your github username'
               value={username}
               onChange={function (event) {
                 const name = event.target.value;
@@ -124,13 +125,23 @@ export default function PaginaInicial() {
               minHeight: '240px',
             }}
           >
-            <Image
-              styleSheet={{
+            { username !== '' ? (
+              <Image
+                styleSheet={{
                 borderRadius: '50%',
                 marginBottom: '16px',
-              }}
-              src={`https://github.com/${username}.png`}
-            />
+                }}
+                src={`https://github.com/${username}.png`}
+              />
+            ) : (
+              <Image
+                styleSheet={{
+                borderRadius: '50%',
+                marginBottom: '16px',
+                }}
+                src={`https://github.com/github.png`}
+              />
+            ) }
             <Text
               variant="body4"
               styleSheet={{
