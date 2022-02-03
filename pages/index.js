@@ -72,9 +72,9 @@ export default function PaginaInicial() {
               width: { xs: '100%', sm: '50%' }, textAlign: 'center', marginBottom: '32px',
             }}
           >
-            <Title tag="h2">Boas vindas de volta!</Title>
+            <Title tag="h2">Welcome to matrix!</Title>
             <Text variant="body3" styleSheet={{ marginBottom: '32px', color: appConfig.theme.colors.neutrals[300] }}>
-              {appConfig.name}
+              Aluracord - Matrix
             </Text>
             
             <TextField
@@ -96,7 +96,7 @@ export default function PaginaInicial() {
             />
             <Button
               type='submit'
-              label='Entrar'
+              label='Enter'
               fullWidth
               buttonColors={{
                 contrastColor: appConfig.theme.colors.neutrals["000"],
