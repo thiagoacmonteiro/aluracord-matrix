@@ -1,4 +1,4 @@
-# Recipes AluraCord Matrix
+# AluraCord Matrix Project
 
 A real time chat, including gifs, using Supabase as database for the messages list.
 
